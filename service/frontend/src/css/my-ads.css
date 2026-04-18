@@ -1,0 +1,68 @@
+/* ==========================================================================
+   my-ads.css
+   - Pagina "I miei annunci"
+   ========================================================================== */
+
+.myads { padding: 26px 0 40px; }
+
+.myads-head{
+  margin-bottom: 14px;
+}
+.page-title{
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin: 0;
+}
+.page-sub{
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.empty-state{
+  margin-top: 16px;
+}
+.empty-card{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.myad-actions{
+  display:flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.btn-danger{
+  border: 1px solid rgba(255,80,80,.35);
+  background: rgba(255,80,80,.12);
+  color: rgba(255,255,255,.92);
+}
+.btn-danger:hover{ background: rgba(255,80,80,.18); }
+
+
+/* ==========================================================================
+   Card "I miei annunci" + azione elimina (overlay)
+   ========================================================================== */
+.myad-card{ position: relative; }
+
+/* Pulsante elimina in overlay (non cambia il layout delle card) */
+.myad-del{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.28);
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+}
+.myad-del:hover{ background: rgba(0,0,0,.42); }
