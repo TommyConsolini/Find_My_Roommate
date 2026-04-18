@@ -1,0 +1,12 @@
+# Usiamo l'immagine ufficiale di Apache
+FROM httpd:2.4-alpine
+
+# Abilitiamo mod_proxy, mod_proxy_http e mod_rewrite
+RUN sed -i 's/^#LoadModule proxy_module/LoadModule proxy_module/' /usr/local/apache2/conf/httpd.conf && \
+    sed -i 's/^#LoadModule proxy_http_module/LoadModule proxy_http_module/' /usr/local/apache2/conf/httpd.conf && \
+    sed -i 's/^#LoadModule rewrite_module/LoadModule rewrite_module/' /usr/local/apache2/conf/httpd.conf
+
+# Reverse proxy corretto (mantiene /api)
+RUN printf '\n# --- FindMyRoommate dev proxy ---\nProxyRequests Off\nProxyPreserveHost On\nProxyPass "/api/" "http://backend/api/"\nProxyPassReverse "/api/" "http://backend/api/"\n# --------------------------------\n' >> /usr/local/apache2/conf/httpd.conf
+
+WORKDIR /usr/local/apache2/htdocs/
