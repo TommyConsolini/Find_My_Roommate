@@ -1,0 +1,10 @@
+# Usiamo MariaDB come indicato nei requisiti (MySQL/MariaDB)
+FROM mysql:latest
+
+# Copiamo lo script init.sql nella cartella speciale di Docker.
+# Qualsiasi file .sql in questa cartella viene eseguito automaticamente 
+# alla creazione del database.
+COPY ./configs/init.sql /docker-entrypoint-initdb.d/
+
+# Opzionale: impostiamo il fuso orario per i messaggi (SR.5.1)
+ENV TZ=Europe/Rome
