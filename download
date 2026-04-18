@@ -1,0 +1,60 @@
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Database & Logs
+sql/data/
+*.log
+docker/db_data/
+
+# PHP & Backend
+src/uploads/*
+!src/public/uploads/.gitkeep
+vendor/
+.php-cs-fixer.cache
+.phpunit.result.cache
+
+# OS / Editors
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+.nvim/
+
+# Environment
+.env
+# --- OS Generici ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+desktop.ini
+*~
+*.swp
+*.lock
+
+# --- IDE (VS Code, JetBrains) ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Progetto & Backend ---
+# Ignora le dipendenze di Composer
+vendor/
+.env
+*.log
+
+# --- Storage ---
+/storage/*
+!/storage/.gitkeep
+
+# --- Uploads Utenti ---
+# Ignora le immagini caricate dagli utenti durante i test
+/services/backend/src/uploads/*
+!/services/backend/src/uploads/.gitkeep

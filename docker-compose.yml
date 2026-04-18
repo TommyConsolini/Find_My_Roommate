@@ -1,0 +1,56 @@
+services:
+  frontend:
+    build:
+      context: ./services/frontend
+      dockerfile: Dockerfile.development
+    ports:
+      - "8080:80"
+    volumes:
+      - ./services/frontend/src:/usr/local/apache2/htdocs/
+    networks:
+      - roommate-net
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./services/backend
+      dockerfile: Dockerfile.development
+    # Non serve esporre la porta all'esterno se il frontend ci parla via rete interna
+    volumes:
+      - ./services/backend/src:/var/www/html
+      - ./storage/uploads:/var/www/html/uploads
+    environment:
+      DB_HOST: database
+      DB_NAME: find_my_roommate
+      DB_USER: root
+      DB_PASS: root_password
+    networks:
+      - roommate-net
+    depends_on:
+      - database
+
+  database:
+    image: mariadb:latest
+    container_name: database # Nome fisso per facilitare il login
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: find_my_roommate
+    volumes:
+      - ./services/database/configs/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - roommate-net
+
+  adminer:
+    image: adminer
+    ports:
+      - "8888:8080"
+    environment:
+      # Impostiamo il server di default così Adminer sa già dove guardare
+      ADMINER_DEFAULT_SERVER: database 
+    networks:
+      - roommate-net
+
+networks:
+  roommate-net:
+    driver: bridge
