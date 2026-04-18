@@ -1,0 +1,158 @@
+### Test Case 1: Valid Registration (Happy Path)
+# Objective: Verify that a valid user can be created [cite: 15, 17]
+# Expected Output: 201 Created [cite: 54, 76]
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "password": "SecurePassword123!"
+}
+
+### Test Case 2: Missing Fields (Invalid Equivalence Class)
+# Objective: Reveal defects in input validation [cite: 74, 156]
+# Expected Output: 400 Bad Request [cite: 77]
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+    "email": "missing_fields@example.com"
+}
+
+### Test Case 3: Duplicate Email (Regression Test)
+# Objective: Ensure the system handles unique constraints correctly [cite: 253, 258]
+# Expected Output: 400 Bad Request or 409 Conflict
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "password": "SecurePassword123!"
+}
+
+### Test Case 4: Valid Login (Happy Path)
+# Objective: Verify that a registered user can authenticate
+# Expected Output: 200 OK + JSON with user data
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+    "email": "john.doe@example.com",
+    "password": "SecurePassword123!"
+}
+
+### Test Case 5: Invalid Password (Security Test)
+# Objective: Verify that correct email but wrong password fails
+# Expected Output: 401 Unauthorized
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+    "email": "john.doe@example.com",
+    "password": "WrongPassword!"
+}
+
+### Test Case 6: Non-Existent User
+# Objective: Verify response for unknown email
+# Expected Output: 401 Unauthorized
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+    "email": "ghost@example.com",
+    "password": "password"
+}
+
+### Test Case 7: Get Profile (Needs Token)
+# First, perform a LOGIN to get a fresh token. 
+# Replace 'YOUR_TOKEN_HERE' with the token from the login response.
+GET http://localhost:8080/api/profile
+Authorization: Bearer YOUR_TOKEN_HERE
+
+### Test Case 8: Update Profile Preferences
+# Objective: Verify that user can update smoking/pet status
+PUT http://localhost:8080/api/profile
+Authorization: Bearer YOUR_TOKEN_HERE
+Content-Type: application/json
+
+{
+    "bio": "I love quiet places.",
+    "is_smoker": 0,
+    "has_pets": 1,
+    "gender": "M",
+    "birth_date": "1998-05-20"
+}
+
+### Test Case 9: Create Ad (Requires Token)
+POST http://localhost:8080/api/ads
+Authorization: Bearer YOUR_TOKEN_HERE
+Content-Type: application/json
+
+{
+    "title": "Double Room in Milan",
+    "description": "Lovely room near Politecnico.",
+    "price": 500.00,
+    "city": "Milano",
+    "address": "Via Leonardo 10",
+    "smoking_allowed": 0,
+    "pets_allowed": 1,
+    "gender_preference": "Any"
+}
+
+### Test Case 10: Read All Ads (Public)
+GET http://localhost:8080/api/ads
+
+### Test Case 11: Read Single Ad (Public)
+# Replace '1' with an actual ID from the previous response
+GET http://localhost:8080/api/ads?id=1
+
+### Test Case 12: Update Ad (Owner Only)
+PUT http://localhost:8080/api/ads
+Authorization: Bearer YOUR_TOKEN_HERE
+Content-Type: application/json
+
+{
+    "id": 1, 
+    "title": "Double Room in Milan - PRICE DROP",
+    "description": "Urgent!",
+    "price": 450.00,
+    "city": "Milano"
+}
+
+### Test Case 13: Delete Ad (Owner Only)
+DELETE http://localhost:8080/api/ads?id=1
+Authorization: Bearer YOUR_TOKEN_HERE
+
+### Test Case 14: Standard Search (Weighted)
+# Goal: Should return ads with low scores (e.g., 30) if they partially match
+GET http://localhost:8080/api/search?strategy=standard
+Authorization: Bearer <TOKEN>
+
+### Test Case 15: Strict Search (Zero Tolerance)
+# Goal: Should ONLY return perfect matches (Score 100). Partial matches disappear.
+GET http://localhost:8080/api/search?strategy=strict
+Authorization: Bearer <TOKEN>
+
+### Test Case 16: Send Message (User A -> User B)
+# Replace RECEIVER_ID with the ID of another user (e.g., 2)
+POST http://localhost:8080/api/messages
+Authorization: Bearer <TOKEN_USER_A>
+Content-Type: application/json
+
+{
+    "receiver_id": 2,
+    "content": "Hi! Is the room in Milan still available?",
+    "ad_id": 1
+}
+
+### Test Case 17: Read Chat History (User A viewing chat with B)
+GET http://localhost:8080/api/messages?contact_id=2
+Authorization: Bearer <TOKEN_USER_A>
+
+### Test Case 18: Read Inbox (User B checking messages)
+GET http://localhost:8080/api/messages
+Authorization: Bearer <TOKEN_USER_B>
