@@ -1,0 +1,61 @@
+---
+config:
+  layout: elk
+---
+flowchart LR
+ subgraph subGraph0["Sprint 1"]
+        T1.1["T1.1: DB Users"]
+        T0.1["T0.1: Docker Setup"]
+        T1.2["T1.2: API Reg"]
+        T1.4["T1.4: JS Reg"]
+        T1.3["T1.3: HTML Reg"]
+        T2.1["T2.1: API Login"]
+        T2.2["T2.2: HTML Login"]
+        T2.3["T2.3: JS Login"]
+  end
+ subgraph subGraph1["Sprint 2"]
+        T3.1["T3.1: DB Prefs"]
+        M1{"M1"}
+        T4.1["T4.1: DB Ads"]
+        T3.2["T3.2: API Profile"]
+        T4.2["T4.2: API Ads"]
+        T3.3["T3.3: UI Profile"]
+        T4.3["T4.3: UI Dash"]
+        T3.4["T3.4: JS Profile"]
+        T4.4["T4.4: JS Ads"]
+  end
+ subgraph subGraph2["Sprint 3"]
+        T5.1["T5.1: Match Logic"]
+        M2{"M2"}
+        T5.2["T5.2: API Search"]
+        T6.1["T6.1: HTML Results"]
+        T6.2["T6.2: JS Results"]
+  end
+    Start(("Start")) --> T0.1 & T1.3
+    T0.1 --> T1.1 & T1.2
+    T1.1 --> T1.2
+    T1.3 --> T1.4 & T2.2
+    T1.2 --> T2.1 & T1.4
+    T1.4 --> T2.3
+    T2.1 --> T2.3
+    T2.2 --> T2.3
+    T2.3 --> M1
+    M1 --> T3.1 & T4.1 & T3.3 & T4.3
+    T3.2 --> T3.4
+    T3.3 --> T3.4
+    T4.2 --> T4.4
+    T4.3 --> T4.4
+    T3.1 --> T3.2
+    T4.1 --> T4.2
+    T3.4 --> M2
+    T4.4 --> M2
+    M2 --> T5.1 & T6.1
+    T5.1 --> T5.2
+    T6.1 --> T6.2
+    T5.2 --> T6.2
+    T6.2 --> M3{"M3"}
+    
+
+    style M1 fill:#ff9,stroke:#333
+    style M2 fill:#ff9,stroke:#333
+    style M3 fill:#0f0,stroke:#333,stroke-width:4px
