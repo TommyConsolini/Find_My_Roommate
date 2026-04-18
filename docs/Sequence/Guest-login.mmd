@@ -1,0 +1,49 @@
+sequenceDiagram
+    autonumber
+    
+    actor G as Guest
+    participant V as View (Login.html)
+    participant P as Presenter (Auth.js)
+    participant A as API (login.php)
+    participant M as Model (UserModel.php)
+    participant DB as MySQL Database
+
+    Note over G, V: Scenario: User enters credentials
+
+    G->>V: Fills Email and Password
+    G->>V: Clicks on "Login"
+    
+    V->>P: 'submit' event
+    activate P
+    P->>P: Validation (Non-empty fields)
+    
+    Note over P, A: Sending sensitive data via POST (HTTPS)
+    P->>A: FETCH POST /api/login (JSON body)
+    activate A
+    
+    A->>M: login(email, password)
+    activate M
+    
+    M->>DB: SELECT hash, id FROM users WHERE email = ?
+    activate DB
+    DB-->>M: Return Hash & UserData
+    deactivate DB
+    
+    M->>M: password_verify(password, hash)
+    
+    alt Valid Password
+        M->>M: session_start()
+        M-->>A: Return Success + UserRole
+        A-->>P: JSON { success: true, redirect: '/dashboard' }
+        P->>V: window.location.href = '/dashboard'
+        V->>G: Show Dashboard
+    else Invalid Password
+        M-->>A: Return False
+        A-->>P: JSON { success: false, error: "Invalid credentials" }
+        P->>V: Show error "Login failed"
+        V->>G: Show error "Login failed"
+    end
+    
+    deactivate M
+    deactivate A
+    deactivate P

@@ -1,0 +1,62 @@
+sequenceDiagram
+    autonumber
+    
+    actor U as Seeker (User)
+    participant V as View (HTML/DOM)
+    participant P as Presenter (JavaScript)
+    participant A as API Endpoint (search.php)
+    participant M as Model (AdsLogic.php)
+    participant DB as MySQL Database
+
+    Note over U, V: User Interaction
+    U->>V: Insert Filters (City, Price)
+    U->>V: Click "Search"
+    
+    V->>P: 'submit' event (preventDefault)
+    activate P
+    Note right of V: The Presenter intercepts the event<br/>and blocks page reload
+    
+    P->>P: Client-side Input Validation
+    
+    %% PRESENTER -> API (AJAX CALL)
+    Note over P, A: HTTP / JSON Communication
+    P->>A: FETCH GET /api/search?city=Parma
+    activate A
+    
+    %% API -> MODEL
+    A->>M: getCompatibleAds(userId, city)
+    activate M
+    
+    %% MODEL -> DB
+    M->>DB: SELECT * FROM ads WHERE city = ?
+    activate DB
+    DB-->>M: Return ResultSet (Raw Ads)
+    deactivate DB
+    
+    M->>DB: SELECT preferences FROM users WHERE id = ?
+    activate DB
+    DB-->>M: Return User Preferences
+    deactivate DB
+
+    %% BUSINESS LOGIC (MATCHING)
+    loop For each Ad
+        M->>M: Calculate Compatibility Score<br/>(Proprietary Algorithm)
+    end
+    
+    %% DATA RETURN
+    M-->>A: Return Array (Ads + Score)
+    deactivate M
+    
+    A-->>P: Return JSON Response
+    deactivate A
+
+    %% PRESENTER -> VIEW (DOM UPDATE)
+    alt Results found
+        P->>V: Generate HTML Cards (Loop)
+        V-->>U: Show list ordered by Score
+    else No results
+        P->>V: Show "No ads found" Message
+        V-->>U: Show error message
+    end
+    
+    deactivate P

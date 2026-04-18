@@ -1,0 +1,57 @@
+sequenceDiagram
+    autonumber
+    
+    actor O as Owner
+    participant V as View (NewAd.html)
+    participant P as Presenter (Ads.js)
+    participant A as API (ads.php)
+    participant M as Model (AdModel.php)
+    participant DB as MySQL Database
+    participant FS as FileSystem (Docker Vol)
+
+    Note over O, V: Scenario: Owner uploads a new room ad
+
+    O->>V: Fills Data + Selects Photo
+    O->>V: Clicks "Publish"
+    
+    V->>P: 'submit' event
+    activate P
+    
+    Note right of P: Uses FormData to handle<br/>text fields and binary files
+    P->>P: new FormData(formElement)
+    
+    P->>A: FETCH POST /api/ads (Multipart/form-data)
+    activate A
+    
+    Note right of A: Checks active session
+    A->>A: checkSession()
+    
+    A->>M: createAd(data, files)
+    activate M
+    
+    %% IMAGE HANDLING BLOCK
+    rect rgb(240, 248, 255)
+        Note over M, FS: Image Upload Handling
+        M->>M: Generate unique filename
+        M->>FS: move_uploaded_file(temp, /uploads/img.jpg)
+        FS-->>M: Save confirmation
+    end
+    
+    %% DB INSERTION
+    M->>DB: INSERT INTO ads (title, price, img_path) VALUES (?, ?, ?)
+    activate DB
+    DB-->>M: Return New Ad ID
+    deactivate DB
+    
+    M-->>A: Return Success (Ad ID)
+    deactivate M
+    
+    A-->>P: JSON { success: true, id: 101 }
+    deactivate A
+    
+    P->>V: Show message "Ad Published!"
+    P->>V: window.location.href = '/my-ads'
+    deactivate P
+
+    V->>O: Show message "Ad Published!"
+    V->>O: Show personal Ads
