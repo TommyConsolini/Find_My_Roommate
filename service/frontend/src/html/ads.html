@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pubblica annuncio • FindMyRoommate</title>
+
+    <!-- CSS -->
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/ads.css">
+  <link rel="stylesheet" href="/css/footer.css">
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="container bar">
+      <a class="brand" href="homepage.html">
+        <img src="/img/logo.png" alt="FindMyRoommate" />
+        <div>
+          <div class="name">FindMyRoommate</div>
+          <span class="tag">Trova la convivenza giusta</span>
+        </div>
+      </a>
+
+      <div class="center-cta">
+        <a class="btn btn-primary" href="ads.html">Pubblica annunci</a>
+      </div>
+
+      <a id="topMessagesLink" class="top-link" href="messages.html" style="display:none;">Messaggi</a>
+
+      <div class="user-area">
+        <a id="userLink" class="user-link" href="login.html">Accedi</a>
+        <button id="avatarBtn" class="avatar-btn" aria-label="Profilo">
+          <img id="userAvatar" src="/img/avatar-default.png" alt="avatar" />
+        </button>
+        <div id="userDropdown" class="dropdown"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 26px 0 90px;">
+    <div class="page-head" style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:14px;">
+      <div>
+        <h1 style="margin:0; font-size: 1.45rem;">Pubblica un annuncio</h1>
+        <p style="margin:6px 0 0; color: var(--muted);">Compila i dettagli: più informazioni = più match e meno perdite di tempo.</p>
+      </div>
+      <a class="btn" href="homepage.html" style="border:1px solid var(--border); background: rgba(255,255,255,.04);">Torna alla home</a>
+    </div>
+
+    <div class="publish-grid">
+      <!-- FORM -->
+      <section class="card publish-card">
+        <form id="publishForm" class="publish-form" autocomplete="off">
+
+          <div class="form-section">
+            <div class="form-title">Informazioni principali</div>
+
+            <label class="field">
+              <span>Titolo annuncio</span>
+              <input id="title" type="text" placeholder="Es. Stanza singola luminosa vicino università" required />
+            </label>
+
+            <div class="two">
+              <label class="field">
+                <span>Città</span>
+                <input id="city" type="text" placeholder="Es. Parma" required />
+              </label>
+              <label class="field">
+                <span>Indirizzo</span>
+                <input id="address" type="text" placeholder="Es. Via Repubblica 12" />
+              </label>
+            </div>
+
+            <div class="two">
+              <label class="field">
+                <span>Prezzo (€/mese)</span>
+                <input id="price" type="number" min="0" step="10" placeholder="Es. 420" required />
+              </label>
+              <label class="field">
+                <span>Superficie (m²)</span>
+                <input id="surface" type="number" min="0" step="1" placeholder="Es. 80" required />
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-title">Dettagli immobile</div>
+
+            <div class="three">
+              <label class="field">
+                <span>Locali</span>
+                <input id="rooms" type="number" min="0" step="1" placeholder="Es. 3" required />
+              </label>
+              <label class="field">
+                <span>Bagni</span>
+                <input id="baths" type="number" min="0" step="1" placeholder="Es. 2" required />
+              </label>
+              <label class="field">
+                <span>Piano</span>
+                <input id="floor" type="text" placeholder="Es. 2" />
+              </label>
+            </div>
+
+            <div class="features">
+              <label class="chip"><input type="checkbox" id="elevator" /> Ascensore</label>
+              <label class="chip"><input type="checkbox" id="furnished" /> Arredato</label>
+              <label class="chip"><input type="checkbox" id="wifi" /> Wi‑Fi</label>
+              <label class="chip"><input type="checkbox" id="aircon" /> Climatizzazione</label>
+              <label class="chip"><input type="checkbox" id="parking" /> Posto auto</label>
+              <label class="chip"><input type="checkbox" id="terrace" /> Terrazzo</label>
+              <label class="chip"><input type="checkbox" id="garden" /> Giardino</label>
+              <label class="chip"><input type="checkbox" id="student" /> Ideale studenti</label>
+              <label class="chip"><input type="checkbox" id="smoker" /> Fumatori</label>
+              <label class="chip"><input type="checkbox" id="pets" /> Animali domestici</label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-title">Foto</div>
+            <p class="hint">Aggiungi fino a 6 foto (JPG/PNG). Le foto servono per l'anteprima.</p>
+
+            <div class="uploader">
+              <input id="photos" type="file" accept="image/*" multiple />
+              <div class="uploader-drop">
+                <div class="uploader-ic">📷</div>
+                <div>
+                  <div class="uploader-title">Trascina qui le foto</div>
+                  <div class="uploader-sub">oppure clicca per selezionarle</div>
+                </div>
+              </div>
+              <div id="photoPreview" class="photo-preview" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-title">Descrizione</div>
+            <label class="field">
+              <span>Descrizione</span>
+              <textarea id="description" rows="5" placeholder="Descrivi la casa, i coinquilini e cosa cerchi…" required></textarea>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="resetBtn" class="btn" style="border:1px solid var(--border); background: rgba(255,255,255,.04);">Svuota</button>
+            <button type="submit" class="btn btn-primary">Pubblica annuncio</button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- SIDE PREVIEW -->
+      <aside class="card preview-card">
+        <div class="preview-head">
+          <div class="preview-title">Anteprima</div>
+          <div class="preview-sub">Come apparirà nella lista.</div>
+        </div>
+
+        <div id="adPreview" class="ad-preview">
+          <div class="ad-preview-img"></div>
+          <div class="ad-preview-body">
+            <div class="ad-preview-title">Titolo annuncio</div>
+            <div class="ad-preview-meta">Città • Indirizzo</div>
+            <div class="ad-preview-price">€ 0 / mese</div>
+            <div class="ad-preview-chips">
+              <span class="mini">Locali</span>
+              <span class="mini">Bagni</span>
+              <span class="mini">m²</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tips">
+          <div class="tips-title">Consigli rapidi</div>
+          <ul>
+            <li>Specifica se <b>fumatori</b> e <b>animali</b> sono accettati: aumenta la compatibilità.</li>
+            <li>Aggiungi almeno 2 foto: gli annunci con immagini ricevono più contatti.</li>
+            <li>Descrizione chiara: regole della casa, orari, preferenze.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer-bar">
+    <div class="container footer-inner">
+      <span>© Find My Roommate • Progetto Ingegneria del Software</span>
+    </div>
+  </footer>
+
+  <script src="../js/core.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/models/AdPublishModel.js"></script>
+  <script src="../js/views/AdPublishView.js"></script>
+  <script src="../js/presenters/AdPublishPresenter.js"></script>
+
+  <script src="../js/ads.js"></script>
+  
+</body>
+</html>

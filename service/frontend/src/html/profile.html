@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profilo • Find My Roommate</title>
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/profile.css">
+  <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+  <!-- ===================== TOPBAR (comune) ===================== -->
+  <header class="topbar">
+    <div class="container">
+      <div class="bar">
+        <a class="brand" href="homepage.html" aria-label="Homepage">
+          <img src="../img/logo.png?v=1" alt="Logo FindMyRoommate" />
+          <div>
+            <div class="name">FindMyRoommate</div>
+            <span class="tag">Trova la convivenza giusta</span>
+          </div>
+        </a>
+
+        <div class="center-cta">
+          <a id="publishCta" class="btn btn-accent" href="ads.html" title="Crea / gestisci i tuoi annunci">
+            Pubblica annunci
+          </a>
+        </div>
+
+        <div class="user-area">
+          <a id="topMessagesLink" class="top-link" href="messages.html" style="display:none">Messaggi</a>
+
+          <a id="userLink" class="user-link" href="login.html">Accedi</a>
+
+          <button id="avatarBtn" class="avatar-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+            <img id="userAvatar" src="../img/avatar-default.png" alt="Profilo" />
+          </button>
+
+          <div id="userDropdown" class="dropdown" role="menu"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:24px;">
+    <div class="account-layout">
+      <!-- Sidebar -->
+      <aside class="account-nav" aria-label="Impostazioni account">
+        <h1 class="account-title">Impostazioni account</h1>
+
+        <button class="nav-item active" type="button" data-tab="contact">
+          <div class="nav-main">Informazioni di contatto</div>
+          <div class="nav-sub">Email, Telefono</div>
+        </button>
+
+        <button class="nav-item" type="button" data-tab="personal">
+          <div class="nav-main">Dati personali</div>
+          <div class="nav-sub">Nome e cognome, Data di nascita, Genere, Tipologia utente, Residenza, Lingua…</div>
+        </button>
+
+        <button class="nav-item" type="button" data-tab="security">
+          <div class="nav-main">Sicurezza e privacy</div>
+          <div class="nav-sub">Password, Privacy</div>
+        </button>
+      </aside>
+
+      <!-- Content -->
+      <section class="account-content">
+        <!-- ============ CONTATTI ============ -->
+        <section class="panel" data-panel="contact">
+          <h2 class="panel-title">Informazioni di contatto</h2>
+
+          <div class="row">
+            <div>
+              <div class="row-label">Email</div>
+              <div id="contactEmail" class="row-value">—</div>
+            </div>
+            <button class="row-action" type="button" disabled>MODIFICA</button>
+          </div>
+
+          <div class="row">
+            <div>
+              <div class="row-label">Telefono</div>
+              <div id="contactPhone" class="row-value muted">Non fornito</div>
+            </div>
+            <button class="row-action" type="button" disabled>AGGIUNGI</button>
+          </div>
+
+          <div class="hint">
+            Questi dati sono usati per contattarti e per notifiche relative agli annunci.
+          </div>
+        </section>
+
+        <!-- ============ DATI PERSONALI ============ -->
+        <section class="panel" data-panel="personal" hidden>
+          <h2 class="panel-title">Dati personali</h2>
+
+          <div class="avatar-card">
+            <div class="avatar-circle" id="profileInitials">FM</div>
+            <button class="avatar-edit" type="button" disabled>MODIFICA</button>
+          </div>
+
+          <div class="row">
+            <div>
+              <div class="row-label">Nome e cognome</div>
+              <div id="fullName" class="row-value">—</div>
+            </div>
+            <button class="row-action" type="button" disabled>MODIFICA</button>
+          </div>
+
+          <form id="profileForm" class="form">
+            <div class="grid2">
+              <div>
+                <label class="label" for="birth_date">Data di nascita</label>
+                <input class="input" id="birth_date" type="date" />
+              </div>
+
+              <div>
+                <label class="label" for="gender">Genere</label>
+                <select id="gender" class="input">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid2" style="margin-top:10px;">
+              <label class="check">
+                <input id="has_pets" type="checkbox" />
+                <span>Animali domestici</span>
+              </label>
+
+              <label class="check">
+                <input id="is_smoker" type="checkbox" />
+                <span>Fumatore</span>
+              </label>
+            </div>
+
+            <label class="label" for="bio" style="margin-top:12px;">Bio</label>
+            <textarea id="bio" class="textarea" placeholder="Descrivi brevemente abitudini e preferenze (ordine, feste, orari, ecc.)"></textarea>
+
+            <div class="actions">
+              <button class="btn btn-accent" type="submit">Salva</button>
+            </div>
+          </form>
+
+          <div class="hint">
+            Queste informazioni vengono usate dall'algoritmo di matching.
+          </div>
+        </section>
+
+        <!-- ============ SICUREZZA ============ -->
+        <section class="panel" data-panel="security" hidden>
+          <h2 class="panel-title">Sicurezza e privacy</h2>
+
+          <div class="row">
+            <div>
+              <div class="row-label">Password</div>
+              <div class="row-value">••••••••</div>
+            </div>
+            <button class="row-action" type="button" disabled>MODIFICA</button>
+          </div>
+
+          <div class="row">
+            <div>
+              <div class="row-label">Privacy</div>
+              <div class="row-value muted">0/2 consensi selezionati</div>
+            </div>
+            <button class="row-action" type="button" disabled>MODIFICA</button>
+          </div>
+
+          <div class="hint">
+            (Demo)
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© Find My Roommate • Progetto Ingegneria del Software</div>
+  </footer>
+
+  <script src="../js/core.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/profile.js"></script>
+  <script src="../js/models/ProfileModel.js"></script>
+  <script src="../js/views/ProfileView.js"></script>
+  <script src="../js/presenters/ProfilePresenter.js"></script>
+
+</body>
+</html>

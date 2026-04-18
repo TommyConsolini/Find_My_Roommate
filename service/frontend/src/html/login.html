@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accedi • Find My Roommate</title>
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container">
+      <div class="bar">
+        <a class="brand" href="homepage.html" aria-label="Homepage">
+          <img src="../img/logo.png?v=1" alt="Logo FindMyRoommate" />
+          <div>
+            <div class="name">FindMyRoommate</div>
+            <span class="tag">Trova la convivenza giusta</span>
+          </div>
+        </a>
+
+        <div class="center-cta">
+          <a id="publishCta" class="btn btn-accent" href="ads.html" title="Crea / gestisci i tuoi annunci">
+            Pubblica annunci
+          </a>
+        </div>
+
+        <div class="user-area">
+          <a id="topMessagesLink" class="top-link" href="messages.html" style="display:none">Messaggi</a>
+
+          <!-- Testo separato: clic su 'Accedi' => login, clic su avatar => menu -->
+          <a id="userLink" class="user-link" href="login.html">Accedi</a>
+
+          <!-- Avatar (apre dropdown) -->
+          <button id="avatarBtn" class="avatar-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+            <img id="userAvatar" src="../img/avatar-default.png" alt="Profilo" />
+          </button>
+
+          <!-- Dropdown -->
+          <div id="userDropdown" class="dropdown" role="menu">
+            <div class="dd-top">
+              <div class="dd-topline">
+                <div class="dd-title" id="ddTitle">Account</div>
+                <button id="ddClose" class="icon-btn" type="button" aria-label="Chiudi menu">✕</button>
+              </div>
+
+              <div class="dd-sub" id="ddSub">Accedi per scoprire tutte le funzionalità disponibili</div>
+              <a id="ddAuthCta" class="btn btn-accent dd-cta" href="login.html">ACCEDI O REGISTRATI</a>
+            </div>
+
+            <div class="dd-links">
+              <a href="messages.html">Messaggi</a>
+              <a href="ads.html">I miei annunci</a>
+              <a href="profile.html">Profilo</a>
+            </div>
+
+            <div class="dd-foot">
+              <button id="logoutBtn" type="button" class="dd-logout">Esci</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       LOGIN
+       ===================================================================== -->
+  <main class="auth-bg">
+    <div class="auth-wrap">
+      <section class="auth-card">
+        <h1>Accedi</h1>
+        <p class="sub">Inserisci email e password per accedere e vedere compatibilità, messaggi e gestione annunci.</p>
+
+        <form id="loginForm">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" required placeholder="nome@email.it" />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw-wrap">
+              <input id="password" type="password" required placeholder="••••••••" />
+              <button class="pw-toggle" type="button" data-toggle="password" aria-label="Mostra/Nascondi password"><img class="pw-icon" src="/img/occhi.svg" alt=""></button>
+            </div>
+          </div>
+
+          <div class="auth-actions">
+            <button class="btn btn-accent" type="submit">Accedi</button>
+          </div>
+
+          <div class="auth-foot">
+            <span>Non hai un account?</span>
+            <a href="register.html">Registrati</a>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© Find My Roommate • Progetto Ingegneria del Software</div>
+  </footer>
+
+  <script src="../js/core.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>

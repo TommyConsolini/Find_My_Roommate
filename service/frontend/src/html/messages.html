@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Messaggi • Find My Roommate</title>
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/messages.css">
+  <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+  <!-- ===================== TOPBAR (comune) ===================== -->
+  <header class="topbar">
+    <div class="container">
+      <div class="bar">
+        <a class="brand" href="homepage.html" aria-label="Homepage">
+          <img src="../img/logo.png?v=1" alt="Logo FindMyRoommate" />
+          <div>
+            <div class="name">FindMyRoommate</div>
+            <span class="tag">Trova la convivenza giusta</span>
+          </div>
+        </a>
+
+        <div class="center-cta">
+          <a id="publishCta" class="btn btn-accent" href="ads.html" title="Crea / gestisci i tuoi annunci">
+            Pubblica annunci
+          </a>
+        </div>
+
+        <div class="user-area">
+          <a id="topMessagesLink" class="top-link" href="messages.html" style="display:none">Messaggi</a>
+
+          <!-- Testo separato: clic su 'Accedi' => login, clic su avatar => menu -->
+          <a id="userLink" class="user-link" href="login.html">Accedi</a>
+
+          <!-- Avatar (apre dropdown) -->
+          <button id="avatarBtn" class="avatar-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+            <img id="userAvatar" src="../img/avatar-default.png" alt="Profilo" />
+          </button>
+
+          <!-- Dropdown -->
+          <div id="userDropdown" class="dropdown" role="menu">
+            <div class="dd-top">
+              <div class="dd-topline">
+                <div class="dd-title" id="ddTitle">Account</div>
+                <button id="ddClose" class="icon-btn" type="button" aria-label="Chiudi menu">✕</button>
+              </div>
+
+              <div class="dd-sub" id="ddSub">Accedi per scoprire tutte le funzionalità disponibili</div>
+              <a id="ddAuthCta" class="btn btn-accent dd-cta" href="login.html">ACCEDI O REGISTRATI</a>
+            </div>
+
+            <div class="dd-links">
+              <a href="messages.html">Messaggi</a>
+              <a href="ads.html">I miei annunci</a>
+              <a href="profile.html">Profilo</a>
+            </div>
+
+            <div class="dd-foot">
+              <button id="logoutBtn" type="button" class="dd-logout">Esci</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="messages-page">
+    <div class="container">
+      <div class="wa">
+        <!-- Sidebar -->
+        <aside class="wa-side" aria-label="Conversazioni">
+          <div class="wa-side-head">
+            <div>
+              <div class="wa-side-title">Chat</div>
+              <div class="wa-side-sub">Conversazioni per annuncio</div>
+            </div>
+            <button id="btnNewChat" class="icon-btn" type="button" title="Nuova chat (demo)">＋</button>
+          </div>
+
+          <div class="wa-search">
+            <input id="chatSearch" type="search" placeholder="Cerca annuncio o città..." />
+          </div>
+
+          <div id="chatList" class="wa-list" role="list"></div>
+        </aside>
+
+        <!-- Chat -->
+        <section class="wa-chat" aria-label="Chat">
+          <div class="wa-chat-head">
+            <div class="wa-chat-meta">
+              <div id="chatTitle" class="wa-chat-title">Seleziona una chat</div>
+              <div id="chatSub" class="wa-chat-sub">Clicca una conversazione a sinistra</div>
+            </div>
+            <div class="wa-chat-actions">
+              <a id="goAd" class="btn btn-ghost" href="homepage.html" title="Apri annuncio">Apri annuncio</a>
+            </div>
+          </div>
+
+          <div id="chatBody" class="wa-body" role="log" aria-live="polite"></div>
+
+          <form id="chatForm" class="wa-input" autocomplete="off">
+            <input id="chatMsg" type="text" placeholder="Scrivi un messaggio..." />
+            <button class="btn btn-accent" type="submit">Invia</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      © Find My Roommate • Progetto Ingegneria del Software
+    </div>
+  </footer>
+
+  <!-- Script comuni (gestione token, header auth, toast, ecc.) -->
+  <script src="../js/core.js"></script>
+  <script src="../js/ui.js"></script>
+
+  <!-- Script specifico pagina -->
+  <script src="../js/messages.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registrati • Find My Roommate</title>
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="bar">
+        <a class="brand" href="homepage.html" aria-label="Homepage">
+          <img src="../img/logo.png?v=1" alt="Logo FindMyRoommate" />
+          <div>
+            <div class="name">FindMyRoommate</div>
+            <span class="tag">Trova la convivenza giusta</span>
+          </div>
+        </a>
+
+        <div class="center-cta">
+          <a id="publishCta" class="btn btn-accent" href="ads.html" title="Crea / gestisci i tuoi annunci">
+            Pubblica annunci
+          </a>
+        </div>
+
+        <div class="user-area">
+          <a id="topMessagesLink" class="top-link" href="messages.html" style="display:none">Messaggi</a>
+
+          <!-- Testo separato: clic su 'Accedi' => login, clic su avatar => menu -->
+          <a id="userLink" class="user-link" href="login.html">Accedi</a>
+
+          <!-- Avatar (apre dropdown) -->
+          <button id="avatarBtn" class="avatar-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+            <img id="userAvatar" src="../img/avatar-default.png" alt="Profilo" />
+          </button>
+
+          <!-- Dropdown -->
+          <div id="userDropdown" class="dropdown" role="menu">
+            <div class="dd-top">
+              <div class="dd-topline">
+                <div class="dd-title" id="ddTitle">Account</div>
+                <button id="ddClose" class="icon-btn" type="button" aria-label="Chiudi menu">✕</button>
+              </div>
+
+              <div class="dd-sub" id="ddSub">Accedi per scoprire tutte le funzionalità disponibili</div>
+              <a id="ddAuthCta" class="btn btn-accent dd-cta" href="login.html">ACCEDI O REGISTRATI</a>
+            </div>
+
+            <div class="dd-links">
+              <a href="messages.html">Messaggi</a>
+              <a href="ads.html">I miei annunci</a>
+              <a href="profile.html">Profilo</a>
+            </div>
+
+            <div class="dd-foot">
+              <button id="logoutBtn" type="button" class="dd-logout">Esci</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       REGISTER
+       ===================================================================== -->
+  <main class="auth-bg">
+    <div class="auth-wrap">
+      <section class="auth-card">
+        <h1>Registrati</h1>
+        <p class="sub">Crea il tuo profilo: potrai pubblicare annunci e ricevere suggerimenti di compatibilità.</p>
+
+        <form id="registerForm">
+          <div class="grid-2">
+            <div class="field">
+              <label for="firstName">Nome</label>
+              <input id="firstName" type="text" required placeholder="Mario" />
+            </div>
+
+            <div class="field">
+              <label for="lastName">Cognome</label>
+              <input id="lastName" type="text" required placeholder="Rossi" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" required placeholder="nome@email.it" />
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="phone">Telefono (opzionale)</label>
+              <input id="phone" type="tel" placeholder="+39 3xx xxx xxxx" />
+            </div>
+
+            <div class="field">
+              <label for="photo">Foto profilo (opzionale)</label>
+              <input id="photo" class="file-input" type="file" accept="image/*" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw-wrap">
+              <input id="password" type="password" required placeholder="••••••••" />
+              <button class="pw-toggle" type="button" data-toggle="password" aria-label="Mostra/Nascondi password"><img class="pw-icon" src="/img/occhi.svg" alt=""></button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="passwordConfirm">Conferma Password</label>
+            <div class="pw-wrap">
+              <input id="passwordConfirm" type="password" required placeholder="••••••••" />
+              <button class="pw-toggle" type="button" data-toggle="passwordConfirm" aria-label="Mostra/Nascondi conferma password">👁</button>
+            </div>
+          </div>
+
+          <div class="auth-actions">
+            <button class="btn btn-accent" type="submit">Crea account</button>
+          </div>
+
+          <div class="auth-foot">
+            <span>Hai già un account?</span>
+            <a href="login.html">Accedi</a>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© Find My Roommate • Progetto Ingegneria del Software</div>
+  </footer>
+
+  <script src="../js/core.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find My Roommate • Homepage</title>
+
+  <!-- CSS comuni -->
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/homepage.css">
+  <link rel="stylesheet" href="../css/footer.css">
+</head>
+
+<body>
+  
+  <main>
+    <!-- ... HERO / SEARCH ... -->
+    <section class="home-hero">
+      <!-- ... -->
+    </section>
+    
+    <!-- ... RISULTATI ... -->
+    <section class="home-section">
+      <div class="container">
+        <h2 id="resultsTitle" class="section-title">Risultati</h2>
+        <div id="results" class="cards-row"></div>
+      </div>
+    </section>
+
+    <!-- ... (altre sezioni e popover filtri) ... -->
+  </main>
+
+  <footer class="footer">
+    <div class="container">© Find My Roommate • Progetto Ingegneria del Software</div>
+  </footer>
+
+  <!-- Script comuni -->
+  <script src="../js/core.js"></script>
+  <script src="../js/ui.js"></script>
+
+  <!-- === NUOVA ARCHITETTURA MVP + PATTERNS === -->
+  <!-- 1. Observer Pattern Helper -->
+  <script src="../js/utils/Subject.js"></script>
+  
+  <!-- 2. Strategy Pattern Classi -->
+  <script src="../js/strategies/SearchStrategy.js"></script>
+  <script src="../js/strategies/StandardSearchStrategy.js"></script>
+  <script src="../js/strategies/StrictSearchStrategy.js"></script>
+
+  <!-- 3. Classi MVP -->
+  <script src="../js/models/SearchModel.js"></script>
+  <script src="../js/views/SearchView.js"></script>
+  <script src="../js/presenters/SearchPresenter.js"></script>
+
+  <!-- 4. Bootstrapper della pagina -->
+  <script src="../js/homepage.js"></script>
+</body>
+</html>

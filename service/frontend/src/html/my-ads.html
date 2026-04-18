@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find My Roommate • I miei annunci</title>
+
+  <!-- CSS comuni -->
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/cards.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/my-ads.css">
+</head>
+<body>
+  <!-- =====================================================================
+       TOPBAR
+       ===================================================================== -->
+  <header class="topbar">
+    <div class="container">
+      <div class="bar">
+        <a class="brand" href="homepage.html" aria-label="Homepage">
+          <img src="/img/logo.png" alt="Logo FindMyRoommate" />
+          <div>
+            <div class="name">FindMyRoommate</div>
+            <span class="tag">Trova la convivenza giusta</span>
+          </div>
+        </a>
+
+        <div class="center-cta">
+          <a id="publishCta" class="btn btn-accent" href="ads.html" title="Crea / gestisci i tuoi annunci">
+            Pubblica annunci
+          </a>
+        </div>
+
+        <div class="user-area">
+          <a id="topMessagesLink" class="top-link" href="messages.html">Messaggi</a>
+
+          <a id="userLink" class="user-link" href="login.html">Accedi</a>
+
+          <button id="avatarBtn" class="avatar-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+            <img id="userAvatar" src="/img/avatar-default.png" alt="Profilo" />
+          </button>
+
+          <div id="userDropdown" class="dropdown" role="menu"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       CONTENUTO
+       ===================================================================== -->
+  <main class="container myads">
+    <div class="myads-head">
+      <h1 class="page-title">I miei annunci</h1>
+      <p class="page-sub">Qui trovi gli annunci che hai pubblicato.</p>
+    </div>
+
+    <div id="myAdsEmpty" class="empty-state" style="display:none;">
+      <div class="empty-card">
+        <h2>Nessun annuncio ancora</h2>
+        <p>Quando pubblichi un annuncio, comparirà qui.</p>
+        <a class="btn btn-accent" href="ads.html">Pubblica un annuncio</a>
+      </div>
+    </div>
+
+    <div id="myAdsList" class="cards-row"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© Find My Roommate • Progetto Ingegneria del Software</div>
+  </footer>
+
+  <!-- Script comuni -->
+  <script src="/js/core.js"></script>
+  <script src="/js/ui.js"></script>
+
+  <!-- Script pagina -->
+  <script src="/js/my-ads.js"></script>
+</body>
+</html>
