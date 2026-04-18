@@ -2,11 +2,11 @@
 
 Questo documento contiene lo scheduling e il monitoraggio delle attività del team, organizzate secondo il modello **I'm Agicle** (Hybrid Scrum/XP).
 
-## Legenda Team
-* **LEAD**: @BecksFedeUniPr (DB, Gestione)
-* **BACK**: @luigimasdea (PHP Model, API)
-* **PRES**: @FedeeSki (JS Presenter, Logic)
-* **VIEW**: @TommyConsolini (HTML/CSS, UI)
+## Ruoli del Team
+* **Database & DevOps Lead** (Gestione DB e container)
+* **Backend Developer** (PHP Model, API)
+* **Logic / Presenter** (JS Presenter, Logic)
+* **Frontend / UI Developer (Il mio ruolo)** (HTML/CSS, JS, UI)
 
 ---
 
@@ -16,17 +16,17 @@ Questo documento contiene lo scheduling e il monitoraggio delle attività del te
 | ID | User Story / Task Tecnico | Ruolo | Stato |
 |:---|:---|:---:|:---:|
 | **US.00** | **Configurazione Ambiente** | | |
-| T0.1 | Setup `docker-compose.yml` (PHP, Apache, MySQL) | **LEAD** | 🟢 Done |
-| T0.2 | Creazione struttura cartelle (MVP pattern) | **LEAD** | 🟢 Done |
+| T0.1 | Setup `docker-compose.yml` (PHP, Apache, MySQL) | DevOps | 🟢 Done |
+| T0.2 | Creazione struttura cartelle (MVP pattern) | DevOps | 🟢 Done |
 | **US.01** | **Registrazione Utente** | | |
-| T1.1 | Schema DB tabella `users` (password hash) | **LEAD** | 🔴 Todo |
-| T1.2 | API `POST /register` (Input: JSON, Output: JSON) | **BACK** | 🟢 Done |
-| T1.3 | Form HTML Registrazione (Responsive) | **VIEW** | 🟢 Done |
-| T1.4 | Logica JS: Validazione input e chiamata AJAX | **PRES** | 🟢 Done |
+| T1.1 | Schema DB tabella `users` (password hash) | Database | 🟢 Done |
+| T1.2 | API `POST /register` (Input: JSON, Output: JSON) | Backend | 🟢 Done |
+| T1.3 | Form HTML Registrazione (Responsive) | **Frontend (Me)** | 🟢 Done |
+| T1.4 | Logica JS: Validazione input e chiamata AJAX | Presenter | 🟢 Done |
 | **US.02** | **Login & Sessione** | | |
-| T2.1 | API `POST /login` con generazione Session/Token | **BACK** | 🟢 Done |
-| T2.2 | Form HTML Login | **VIEW** | 🟢 Done |
-| T2.3 | Logica JS: Gestione risposta login e redirect | **PRES** | 🟢 Done |
+| T2.1 | API `POST /login` con generazione Session/Token | Backend | 🟢 Done |
+| T2.2 | Form HTML Login | **Frontend (Me)** | 🟢 Done |
+| T2.3 | Logica JS: Gestione risposta login e redirect | Presenter | 🟢 Done |
 
 ---
 
