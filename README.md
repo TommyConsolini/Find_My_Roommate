@@ -9,6 +9,7 @@ All'interno del team di sviluppo, ho ricoperto il ruolo di **VIEW Developer**. M
 * Progettazione dell'interfaccia utente (UI) e sviluppo del frontend responsivo utilizzando **HTML5 e CSS3**.
 * Gestione della logica di presentazione e interazione utente (**JavaScript/jQuery**).
 * Integrazione asincrona del frontend con le RESTful API del backend.
+* Creazione della documentazione generale e presentazione del progetto.
 ---
 
 ## Architettura e Tecnologie
