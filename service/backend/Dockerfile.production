@@ -1,0 +1,29 @@
+FROM php:8.2-apache
+
+# 1. Installa estensioni (Uguale al dev + opcache per velocità gratis)
+RUN docker-php-ext-install mysqli pdo pdo_mysql opcache
+
+# 2. Abilita mod_rewrite (Uguale al dev)
+RUN a2enmod rewrite
+
+# 3. Usa la configurazione PHP di produzione
+# (Nasconde gli errori a schermo per sicurezza, essenziale in prod)
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# 4. Imposta la cartella di lavoro
+WORKDIR /var/www/html
+
+# 5. Abilita .htaccess (Uguale al dev)
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
+# --- QUI CAMBIA DAL DEV ---
+
+# 6. Copia il codice sorgente DENTRO l'immagine
+# (Invece di usare i volumi nel docker-compose)
+COPY . /var/www/html
+
+# 7. Correggi i permessi
+# (Apache deve essere il proprietario dei file per leggerli)
+RUN chown -R www-data:www-data /var/www/html
+
+EXPOSE 80
