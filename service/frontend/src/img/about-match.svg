@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200">
+  <rect width="320" height="200" rx="18" fill="#F3F6FF"/>
+  <circle cx="92" cy="92" r="38" fill="#146EFF" opacity="0.18"/>
+  <circle cx="228" cy="92" r="38" fill="#146EFF" opacity="0.18"/>
+  <circle cx="92" cy="84" r="18" fill="#146EFF"/>
+  <rect x="68" y="104" width="48" height="44" rx="16" fill="#146EFF"/>
+  <circle cx="228" cy="84" r="18" fill="#146EFF"/>
+  <rect x="204" y="104" width="48" height="44" rx="16" fill="#146EFF"/>
+  <path d="M124 92 C146 70, 174 70, 196 92" fill="none" stroke="#146EFF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M128 116 C150 140, 170 140, 192 116" fill="none" stroke="#146EFF" stroke-width="10" stroke-linecap="round" opacity="0.5"/>
+  <text x="160" y="184" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#244">Compatibilità</text>
+</svg>
