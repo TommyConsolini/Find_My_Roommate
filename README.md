@@ -4,7 +4,7 @@
 
 *Progetto universitario realizzato in team (metodologia Agile/Scrum) presso l'Università degli Studi di Parma.*
 
-## 👨‍💻 Il mio ruolo (Frontend / UI)
+## Il mio ruolo (Frontend / UI)
 All'interno del team di sviluppo, ho ricoperto il ruolo di **VIEW Developer**. Mi sono occupato principalmente di:
 * Progettazione dell'interfaccia utente (UI) e sviluppo del frontend responsivo utilizzando **HTML5 e CSS3**.
 * Gestione della logica di presentazione e interazione utente (**JavaScript/jQuery**).
